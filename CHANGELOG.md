@@ -1,2 +1,4 @@
+###
+    Added amazon support
 ### 1.0.0
- Initial release (with amazon support).
+    Initial release.
