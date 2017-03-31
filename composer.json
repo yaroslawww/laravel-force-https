@@ -1,0 +1,32 @@
+{
+  "name": "yaroslawww/laravel-force-https",
+  "description": "Easy redirect to https for Laravel",
+  "keywords": [
+    "https",
+    "ssl",
+    "laravel",
+    "php"
+  ],
+  "homepage": "https://github.com/yaroslawww/laravel-force-https",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yaroslav Georgitsa",
+      "email": "yaroslav.georgitsa@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "laravel/framework": "~5.2"
+  },
+  "require-dev": {},
+  "autoload": {
+    "classmap": [
+    ],
+    "psr-0": {
+      "Angecode\\LaravelForceHttps": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
