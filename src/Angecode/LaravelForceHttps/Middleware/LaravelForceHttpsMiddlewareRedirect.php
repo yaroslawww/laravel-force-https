@@ -21,7 +21,7 @@ class LaravelForceHttpsMiddlewareRedirect
             )
         ) {
             if (config('laravelforcehttps.with_query.get') && $request->isMethod('get')) {
-                return redirect()->secure($request->path() . '?' . $request->getQueryString());
+                return redirect()->secure($request->path() . (($request->getQueryString())?('?' . $request->getQueryString()):''));
             }
             return redirect()->secure($request->path());
         }
