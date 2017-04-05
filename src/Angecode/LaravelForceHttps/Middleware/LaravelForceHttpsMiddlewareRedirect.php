@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class LaravelForceHttpsMiddlewareRedirect
 {
-    public function handle(Request $request, Closure $next) {
+    public function handle(Request $request, Closure $next)
+    {
         if (
             !$request->secure()
             && (
@@ -19,6 +20,9 @@ class LaravelForceHttpsMiddlewareRedirect
                 )
             )
         ) {
+            if (config('laravelforcehttps.with_query.get') && $request->isMethod('get')) {
+                return redirect()->secure($request->path() . '?' . $request->getQueryString());
+            }
             return redirect()->secure($request->path());
         }
 

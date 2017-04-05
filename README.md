@@ -25,7 +25,7 @@ Laravel 5 is released!!
 
 ### Composer
 
-    "composer require yaroslawww/laravel-force-https"
+    composer require yaroslawww/laravel-force-https
     
 ### Manually
 
@@ -39,7 +39,7 @@ Open `config/app.php` and find the `providers` key. Add `LaravelForceHttpsServic
 
 ```php
 	...
-	Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider::class
+	Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider::class,
 	...
 ```
 
@@ -101,11 +101,19 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
 
 In order to edit the default configuration for this package you may execute:
 
-```
+```sh
 php artisan vendor:publish --provider="Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider"
 ```
 
 After that, `config/laravelforcehttps.php` will be created. Inside this file you will find all the fields that can be edited in this package.
+
+
+Since you will typically need to overwrite the assets every time the package is updated, you may use the --force flag:
+```sh
+
+php artisan vendor:publish --provider="Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider" --force
+
+```
 
 ## Laravel force https Amazon support 
 If you find yourself behind some sort of proxy - like a load balancer - then certain header information may be sent to you using special X-Forwarded-* headers or the Forwarded header. For example, the Host HTTP header is usually used to return the requested host. But when you're behind a proxy, the actual host may be stored in an X-Forwarded-Host header.
