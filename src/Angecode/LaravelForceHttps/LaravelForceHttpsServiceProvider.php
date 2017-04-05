@@ -2,7 +2,7 @@
 
 namespace Angecode\LaravelForceHttps;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelForceHttpsServiceProvider extends ServiceProvider
