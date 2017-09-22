@@ -65,7 +65,7 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
 
 
 ```php
-	// app/Http/routes.php
+	// /routes/web.php
 
 	Route::group(
 	[
