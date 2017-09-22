@@ -19,7 +19,7 @@ Easy redirect to https for Laravel
 
 ## Laravel compatibility
 
-Laravel 5 is released!!
+Laravel 5.5 is released!
 
 ## Installation
 
@@ -27,15 +27,9 @@ Laravel 5 is released!!
 
     composer require yaroslawww/laravel-force-https
     
-### Manually
-
-It's recommended that you use Composer, however you can download and install from this repository.
-
 ### Laravel
 
-Laravel Force Https comes with a service provider for Laravel. You'll need to add it to your `composer.json` as mentioned in the above steps, then register the service provider with your application.
-
-Open `config/app.php` and find the `providers` key. Add `LaravelForceHttpsServiceProvide` to the array.
+If you use laravel 5.4 and below then open `config/app.php` and find the `providers` key. Add `LaravelForceHttpsServiceProvide` to the array.
 
 ```php
 	...

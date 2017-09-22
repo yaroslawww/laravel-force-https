@@ -1,3 +1,5 @@
+### 1.1.0
+    Added support for laravel 5.5
 ### 1.0.11
     Fix 'ErrorException' when set trusted proxies as array
 ### 1.0.10
