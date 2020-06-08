@@ -11,8 +11,6 @@ An easy redirect to https for Laravel
 
 - <a href="#installation">Installation</a>
     - <a href="#composer">Composer</a>
-    - <a href="#manually">Manually</a>
-    - <a href="#laravel">Laravel</a>
 - <a href="#usage">Usage</a>
     - <a href="#middleware">Middleware</a>
 - <a href="#config">Config</a>
@@ -31,16 +29,6 @@ For use php < 7.4 please use verssion "^1.0"
 
     composer require yaroslawww/laravel-force-https
     
-### Laravel
-
-If you use laravel 5.4 and below then open `config/app.php` and find the `providers` key. Add `LaravelForceHttpsServiceProvide` to the array.
-
-```php
-	// ...
-	Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider::class,
-	// ...
-```
-
 ## Usage
 
 ### Middleware
