@@ -12,7 +12,7 @@ return [
     | will be redirected to https
     |
     */
-    'always_force_https' => false,
+    'always_force_https' => (bool) env('FORCE_HTTPS_ALWAYS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ return [
     |
     */
     'with_query' => [
-        'get' => true
+        'get' => (bool) env('FORCE_HTTPS_REDIRECT_QUERY_GET', true)
     ],
 
     /*
@@ -47,7 +47,7 @@ return [
     |
     */
     'set_trusted_proxies' => [
-        'use_self_client_ip' => false,
+        'use_self_client_ip' => (bool) env('FORCE_HTTPS_USE_SELF_CLIENT_IP', false),
         'ips' => [
             //'192.0.0.1',
             //'10.0.0.0/8',
