@@ -10,7 +10,7 @@ class LaravelForceHttpsMiddlewareRedirect
     public function handle(Request $request, Closure $next)
     {
         if (
-            !$this->isSecure($request)
+            ! $this->isSecure($request)
             && (
                 config('laravelforcehttps.always_force_https')
                 || in_array(
@@ -23,6 +23,7 @@ class LaravelForceHttpsMiddlewareRedirect
             if ($request->getQueryString() && config('laravelforcehttps.with_query.get') && $request->isMethod('get')) {
                 return redirect()->secure($request->path() . '?' . $request->getQueryString());
             }
+
             return redirect()->secure($request->path());
         }
 
@@ -37,8 +38,8 @@ class LaravelForceHttpsMiddlewareRedirect
      * @return bool
      */
 
-    public function isSecure(Request $request){
-        return $request->headers->get('x-forwarded-proto') == 'https' ? true : $request->secure();
+    public function isSecure(Request $request): bool
+    {
+        return $request->headers->get('x-forwarded-proto') === 'https' ? true : $request->secure();
     }
-
 }

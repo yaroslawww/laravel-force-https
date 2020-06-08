@@ -1,6 +1,10 @@
 # Laravel Force Https
 
-Easy redirect to https for Laravel
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/yaroslawww/laravel-force-https.svg?style=flat-square)](https://packagist.org/packages/yaroslawww/laravel-force-https)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](README.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/yaroslawww/laravel-force-https.svg?style=flat-square)](https://packagist.org/packages/yaroslawww/laravel-force-https)
+
+An easy redirect to https for Laravel
 
 
 ## Table of Contents
@@ -17,9 +21,9 @@ Easy redirect to https for Laravel
 - <a href="#changelog">Changelog</a>
 - <a href="#license">License</a>
 
-## Laravel compatibility
+## Compatibility
 
-Laravel 5.5 is released!
+For use php < 7.4 please use verssion "^1.0"
 
 ## Installation
 
@@ -32,9 +36,9 @@ Laravel 5.5 is released!
 If you use laravel 5.4 and below then open `config/app.php` and find the `providers` key. Add `LaravelForceHttpsServiceProvide` to the array.
 
 ```php
-	...
+	// ...
 	Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider::class,
-	...
+	// ...
 ```
 
 ## Usage
@@ -50,16 +54,16 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
 ```php
     //app/Http/Kernel.php
 	
-		/**
-		 * The application's route middleware.
-		 *
-		 * @var array
-		 */
-		protected $routeMiddleware = [
-			/**** OTHER MIDDLEWARE ****/
-			'laravelForceHttps' => \Angecode\LaravelForceHttps\Middleware\LaravelForceHttpsMiddlewareRedirect::class,
-			// REDIRECTION MIDDLEWARE
-		];
+    /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        /**** OTHER MIDDLEWARE ****/
+        'laravelForceHttps' => \Angecode\LaravelForceHttps\Middleware\LaravelForceHttpsMiddlewareRedirect::class,
+        // REDIRECTION MIDDLEWARE
+    ];
 
 ```
 
@@ -67,23 +71,19 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
 ```php
 	// /routes/web.php
 
-	Route::group(
-	[
-		'middleware' => [ 'laravelForceHttps' ]
-	],
-	function()
-	{
-		/** ADD ALL SECURE ROUTES INSIDE THIS GROUP **/
-		Route::get('/', function()
-		{
-			//
-		});
-
-		Route::get('test',function()
-		{
-			//
-		});
-	});
+	Route::middleware('laravelForceHttps')
+        ->group(function() {
+            /** ADD ALL SECURE ROUTES INSIDE THIS GROUP **/
+            Route::get('/', function()
+            {
+                //
+            });
+    
+            Route::get('test',function()
+            {
+                //
+            });
+        });
 
 	/** OTHER PAGES THAT SHOULD NOT BE SECURE **/
 
@@ -117,16 +117,15 @@ Since HTTP headers can be spoofed, Laravel does not trust these proxy headers by
 ```php
 // config/laravelforcehttps.php
 
-...
-    'set_trusted_proxies' => [
-        'use_self_client_ip' => true,
-        'ips' => [
-            '192.0.0.1',
-            '10.0.0.0/8',
-        ]
+//...
+'set_trusted_proxies' => [
+    'use_self_client_ip' => true,
+    'ips' => [
+        '192.0.0.1',
+        '10.0.0.0/8',
     ]
-...
-
+],
+//...
 ```
 
 ## Changelog
