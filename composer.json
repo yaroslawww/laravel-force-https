@@ -1,56 +1,56 @@
 {
-  "name": "yaroslawww/laravel-force-https",
-  "description": "Easy redirect to https for Laravel",
-  "keywords": [
-    "https",
-    "ssl",
-    "redirect",
-    "laravel"
-  ],
-  "homepage": "https://github.com/yaroslawww/laravel-force-https",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Yaroslav Georgitsa",
-      "email": "yaroslav.georgitsa@gmail.com",
-      "homepage": "https://yaroslawww.github.io",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "php": ">=7.4",
-    "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.16",
-    "orchestra/testbench": "^5.0",
-    "phpunit/phpunit": "^9.0",
-    "psalm/plugin-laravel": "^1.2",
-    "vimeo/psalm": "^3.11"
-  },
-  "autoload": {
-    "classmap": [
+    "name": "yaroslawww/laravel-force-https",
+    "description": "Easy redirect to https for Laravel",
+    "keywords": [
+        "https",
+        "ssl",
+        "redirect",
+        "laravel"
     ],
-    "psr-4": {
-      "Angecode\\LaravelForceHttps\\": "src"
-    }
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "scripts": {
-    "psalm": "vendor/bin/psalm",
-    "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Angecode\\LaravelForceHttps\\LaravelForceHttpsServiceProvider"
-      ]
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "homepage": "https://github.com/yaroslawww/laravel-force-https",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yaroslav Georgitsa",
+            "email": "yaroslav.georgitsa@gmail.com",
+            "homepage": "https://yaroslawww.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0",
+        "psalm/plugin-laravel": "^1.2",
+        "vimeo/psalm": "^4.7"
+    },
+    "autoload": {
+        "classmap": [
+        ],
+        "psr-4": {
+            "Angecode\\LaravelForceHttps\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Angecode\\LaravelForceHttps\\LaravelForceHttpsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
 
 

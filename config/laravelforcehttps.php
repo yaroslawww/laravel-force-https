@@ -33,7 +33,7 @@ return [
     |
     */
     'with_query' => [
-        'get' => (bool) env('FORCE_HTTPS_REDIRECT_QUERY_GET', true)
+        'get' => (bool) env('FORCE_HTTPS_REDIRECT_QUERY_GET', true),
     ],
 
     /*
@@ -48,9 +48,9 @@ return [
     */
     'set_trusted_proxies' => [
         'use_self_client_ip' => (bool) env('FORCE_HTTPS_USE_SELF_CLIENT_IP', false),
-        'ips' => [
+        'ips'                => [
             //'192.0.0.1',
             //'10.0.0.0/8',
-        ]
-    ]
+        ],
+    ],
 ];

@@ -10,7 +10,7 @@ class LaravelForceHttpsMiddlewareRedirect
     public function handle(Request $request, Closure $next)
     {
         if (
-            ! $this->isSecure($request)
+            !$this->isSecure($request)
             && (
                 config('laravelforcehttps.always_force_https')
                 || in_array(
@@ -32,7 +32,7 @@ class LaravelForceHttpsMiddlewareRedirect
 
 
     /**
-     * check whether x-forward-proto is provided by the reverse-proxy
+     * Check whether x-forward-proto is provided by the reverse-proxy.
      *
      * @param Request $request
      * @return bool

@@ -18,16 +18,16 @@ class LaravelForceHttpsServiceProvider extends ServiceProvider
             __DIR__ . '/../config/laravelforcehttps.php' => config_path('laravelforcehttps.php'),
         ], 'config');
 
-        if (config('laravelforcehttps.set_trusted_proxies.use_self_client_ip') || ! empty(config('laravelforcehttps.set_trusted_proxies.ips'))) {
+        if (config('laravelforcehttps.set_trusted_proxies.use_self_client_ip') || !empty(config('laravelforcehttps.set_trusted_proxies.ips'))) {
             $proxies = [];
-            if (! empty(config('laravelforcehttps.set_trusted_proxies.ips'))) {
+            if (!empty(config('laravelforcehttps.set_trusted_proxies.ips'))) {
                 $proxies = array_merge(
                     $proxies,
                     config('laravelforcehttps.set_trusted_proxies.ips')
                 );
             }
             if (config('laravelforcehttps.set_trusted_proxies.use_self_client_ip')
-                && ! is_null(Request::getClientIp())
+                && !is_null(Request::getClientIp())
             ) {
                 $proxies[] = Request::getClientIp();
             }

@@ -6,6 +6,40 @@
 
 An easy redirect to https for Laravel
 
+## Redirects using server config
+
+The fastest and easiest way to do a redirect is to configure the server to redirect requests itself (an example is shown
+below). But in some situations you may not have access to the configuration, or you need to do additional checks using
+PHP. Then this package comes in handy.
+
+### Redirect using apache2
+
+Add to **`.htaccess`**
+
+```apacheconf
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+Header always set Content-Security-Policy "upgrade-insecure-requests;"
+```
+
+### Redirect using nginx
+
+You need to migrate configurations from port 80 to 443 and then add redirect from port 80 to port 443
+
+```
+server {
+    listen 443 ssl http2;
+    server_name my-domain.example www.my-domain.example;
+
+    # ... configuration
+}
+server {
+    listen 80;
+    server_name my-domain.example www.my-domain.example;
+    return 301 https://my-domain.example$request_uri;
+}
+```
 
 ## Table of Contents
 
@@ -21,21 +55,23 @@ An easy redirect to https for Laravel
 
 ## Compatibility
 
-For use php < 7.4 please use verssion "^1.0"
+For use php < 7.4 please use version "^1.0"
 
 ## Installation
 
 ### Composer
 
     composer require yaroslawww/laravel-force-https
-    
+
 ## Usage
 
 ### Middleware
 
 Moreover, this package includes a middleware object to redirect all "non-ssl" routes to the corresponding "ssl".
 
-So, if a user navigates to http://url-to-laravel/test and the system has this middleware active it would redirect (301) him automatically to https://url-to-laravel/test. This is mainly used to avoid duplicate content and improve SEO performance.
+So, if a user navigates to http://url-to-laravel/test and the system has this middleware active it would redirect (301)
+him automatically to https://url-to-laravel/test. This is mainly used to avoid duplicate content and improve SEO
+performance.
 
 To do so, you have to register the middleware in the `app/Http/Kernel.php` file like this:
 
@@ -54,7 +90,6 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
     ];
 
 ```
-
 
 ```php
 	// /routes/web.php
@@ -87,20 +122,25 @@ In order to edit the default configuration for this package you may execute:
 php artisan vendor:publish --provider="Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider"
 ```
 
-After that, `config/laravelforcehttps.php` will be created. Inside this file you will find all the fields that can be edited in this package.
-
+After that, `config/laravelforcehttps.php` will be created. Inside this file you will find all the fields that can be
+edited in this package.
 
 Since you will typically need to overwrite the assets every time the package is updated, you may use the --force flag:
+
 ```sh
 
 php artisan vendor:publish --provider="Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider" --force
 
 ```
 
-## Laravel force https Amazon support 
-If you find yourself behind some sort of proxy - like a load balancer - then certain header information may be sent to you using special X-Forwarded-* headers or the Forwarded header. For example, the Host HTTP header is usually used to return the requested host. But when you're behind a proxy, the actual host may be stored in an X-Forwarded-Host header.
+## Laravel force https Amazon support
 
-Since HTTP headers can be spoofed, Laravel does not trust these proxy headers by default. If you are behind a proxy, you should manually whitelist your proxy as like follows:
+If you find yourself behind some sort of proxy - like a load balancer - then certain header information may be sent to
+you using special X-Forwarded-* headers or the Forwarded header. For example, the Host HTTP header is usually used to
+return the requested host. But when you're behind a proxy, the actual host may be stored in an X-Forwarded-Host header.
+
+Since HTTP headers can be spoofed, Laravel does not trust these proxy headers by default. If you are behind a proxy, you
+should manually whitelist your proxy as like follows:
 
 ```php
 // config/laravelforcehttps.php
@@ -117,6 +157,7 @@ Since HTTP headers can be spoofed, Laravel does not trust these proxy headers by
 ```
 
 ## Changelog
+
 View changelog here -> [changelog](CHANGELOG.md)
 
 ## License
