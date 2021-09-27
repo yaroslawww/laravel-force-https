@@ -1,3 +1,9 @@
+### 3.0.0
+
+- Remove trusted proxy - now it supported by laravel "\App\Http\Middleware\TrustProxies"
+- Change namespace
+- Change config file
+ 
 ### 2.0.1
 
 - Update README

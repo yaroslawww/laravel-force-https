@@ -1,6 +1,6 @@
 {
     "name": "yaroslawww/laravel-force-https",
-    "description": "Easy redirect to https for Laravel",
+    "description": "Easy redirect to https for Laravel.",
     "keywords": [
         "https",
         "ssl",
@@ -18,34 +18,38 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0"
+        "php": "^8.0",
+        "illuminate/support": "^8.0|^9.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "orchestra/testbench": "^5.0",
-        "phpunit/phpunit": "^9.0",
-        "psalm/plugin-laravel": "^1.2",
-        "vimeo/psalm": "^4.7"
+        "friendsofphp/php-cs-fixer": "^3.1",
+        "orchestra/testbench": "^6.21",
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.10"
     },
     "autoload": {
-        "classmap": [
-        ],
         "psr-4": {
-            "Angecode\\LaravelForceHttps\\": "src"
+            "ForceHttps\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ForceHttps\\Tests\\": "tests"
         }
     },
     "config": {
         "sort-packages": true
     },
     "scripts": {
+        "test": "vendor/bin/phpunit --stop-on-failure",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "psalm": "vendor/bin/psalm",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Angecode\\LaravelForceHttps\\LaravelForceHttpsServiceProvider"
+                "ForceHttps\\ServiceProvider"
             ]
         }
     },

@@ -8,6 +8,7 @@
 /phpunit.xml.dist   export-ignore
 /tests              export-ignore
 /.editorconfig      export-ignore
-/.php.cs            export-ignore
+/.php-cs-fixer.php  export-ignore
 /.github            export-ignore
+/.scrutinizer.yml   export-ignore
 
