@@ -3,8 +3,11 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/yaroslawww/laravel-force-https.svg?style=flat-square)](https://packagist.org/packages/yaroslawww/laravel-force-https)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](README.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/yaroslawww/laravel-force-https.svg?style=flat-square)](https://packagist.org/packages/yaroslawww/laravel-force-https)
+[![Build Status](https://scrutinizer-ci.com/g/yaroslawww/laravel-force-https/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yaroslawww/laravel-force-https/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/yaroslawww/laravel-force-https/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yaroslawww/laravel-force-https/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yaroslawww/laravel-force-https/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yaroslawww/laravel-force-https/?branch=master)
 
-An easy redirect to https for Laravel
+An easy redirect to https for Laravel.
 
 ## Redirects using server config
 
@@ -55,13 +58,13 @@ server {
 
 ## Compatibility
 
-For use php < 7.4 please use version "^1.0"
+For use php < 8.0 please use version "^2.0"
 
 ## Installation
 
-### Composer
-
-    composer require yaroslawww/laravel-force-https
+```shell
+composer require yaroslawww/laravel-force-https
+```
 
 ## Usage
 
@@ -85,7 +88,7 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
      */
     protected $routeMiddleware = [
         /**** OTHER MIDDLEWARE ****/
-        'laravelForceHttps' => \Angecode\LaravelForceHttps\Middleware\LaravelForceHttpsMiddlewareRedirect::class,
+        'https' => \ForceHttps\Middleware\RedirectToHttps::class,
         // REDIRECTION MIDDLEWARE
     ];
 
@@ -94,7 +97,7 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
 ```php
 	// /routes/web.php
 
-	Route::middleware('laravelForceHttps')
+	Route::middleware('https')
         ->group(function() {
             /** ADD ALL SECURE ROUTES INSIDE THIS GROUP **/
             Route::get('/', function()
@@ -119,41 +122,18 @@ To do so, you have to register the middleware in the `app/Http/Kernel.php` file 
 In order to edit the default configuration for this package you may execute:
 
 ```sh
-php artisan vendor:publish --provider="Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider"
+php artisan vendor:publish --provider="ForceHttps\ServiceProvider"
 ```
 
-After that, `config/laravelforcehttps.php` will be created. Inside this file you will find all the fields that can be
+After that, `config/force-https.php` will be created. Inside this file you will find all the fields that can be
 edited in this package.
 
 Since you will typically need to overwrite the assets every time the package is updated, you may use the --force flag:
 
 ```sh
 
-php artisan vendor:publish --provider="Angecode\LaravelForceHttps\LaravelForceHttpsServiceProvider" --force
+php artisan vendor:publish --provider="ForceHttps\ServiceProvider" --force
 
-```
-
-## Laravel force https Amazon support
-
-If you find yourself behind some sort of proxy - like a load balancer - then certain header information may be sent to
-you using special X-Forwarded-* headers or the Forwarded header. For example, the Host HTTP header is usually used to
-return the requested host. But when you're behind a proxy, the actual host may be stored in an X-Forwarded-Host header.
-
-Since HTTP headers can be spoofed, Laravel does not trust these proxy headers by default. If you are behind a proxy, you
-should manually whitelist your proxy as like follows:
-
-```php
-// config/laravelforcehttps.php
-
-//...
-'set_trusted_proxies' => [
-    'use_self_client_ip' => true,
-    'ips' => [
-        '192.0.0.1',
-        '10.0.0.0/8',
-    ]
-],
-//...
 ```
 
 ## Changelog
@@ -162,4 +142,7 @@ View changelog here -> [changelog](CHANGELOG.md)
 
 ## License
 
-Laravel Force Https is an open-sourced laravel package licensed under the MIT license
+## Credits
+
+- [![Lemeor](https://yaroslawww.github.io/images/sponsors/packages/logo-lemeor.png)](https://lemeor.com/) 
+- [![Think Studio](https://yaroslawww.github.io/images/sponsors/packages/logo-think-studio.png)](https://think.studio/) 
